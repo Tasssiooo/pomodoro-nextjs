@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-export default function Inbox() {
+export default function Completed() {
   return (
     <>
       <header className="flex flex-row justify-between items-center">
@@ -13,11 +13,11 @@ export default function Inbox() {
             viewBox="0 0 24 24"
           >
             <path
-              fill="currentColor"
-              d="M19 15h-4a3 3 0 0 1-3 3a3 3 0 0 1-3-3H5V5h14m0-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"
+              fill="green"
+              d="M.41 13.41L6 19l1.41-1.42L1.83 12m20.41-6.42L11.66 16.17L7.5 12l-1.43 1.41L11.66 19l12-12M18 7l-1.41-1.42l-6.35 6.35l1.42 1.41z"
             />
           </svg>
-          <h2 className="font-semibold text-lg lg:text-xl">Inbox</h2>
+          <h2 className="font-semibold text-lg lg:text-xl">Completed tasks</h2>
         </div>
         <div role="group" className="space-x-4">
           <Button size="icon">

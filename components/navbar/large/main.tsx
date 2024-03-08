@@ -7,7 +7,7 @@ import Navigation from "./components/navigation";
 
 export default function NavBarLg() {
   return (
-    <header className="hidden lg:flex flex-col space-y-4 w-64 h-screen shadow">
+    <header className="hidden lg:flex flex-col space-y-4 min-w-64 h-screen shadow dark:shadow-primary/50">
       <Heading />
       <div className="flex flex-col justify-between h-full">
         <div className="px-3">

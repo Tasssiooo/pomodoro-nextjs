@@ -35,12 +35,19 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
+          storageKey="theme"
           enableSystem
           disableTransitionOnChange
         >
-          <NavBarLg />
-          <NavBarSm />
-          {children}
+          <div className="flex flex-row max-w-[1440px] mx-auto">
+            <NavBarLg />
+            <NavBarSm />
+            <main className="px-12 py-8 w-full">
+              <section className="size-full px-7 py-4 shadow dark:shadow-primary/50 rounded-lg">
+                {children}
+              </section>
+            </main>
+          </div>
         </ThemeProvider>
       </body>
     </html>
