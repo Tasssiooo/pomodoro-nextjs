@@ -1,9 +1,9 @@
 import { Separator } from "@/components/ui/separator";
 
 import Heading from "./components/heading";
-import AddTask from "./components/addtask";
-import User from "./components/user";
+import AddTaskModal from "./components/addtask-modal";
 import Navigation from "./components/navigation";
+import User from "./components/user";
 
 export default function NavBarLg() {
   return (
@@ -11,7 +11,7 @@ export default function NavBarLg() {
       <Heading />
       <div className="flex flex-col justify-between h-full">
         <div className="px-3">
-          <AddTask />
+          <AddTaskModal />
           <Separator orientation="horizontal" className="mb-3.5 mt-1.5" />
           <Navigation />
         </div>
