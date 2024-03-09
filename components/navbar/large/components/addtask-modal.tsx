@@ -6,7 +6,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+
 import AddTask from "./addtask";
+import AddTaskForm from "./addtask-form";
 
 export default function AddTaskModal() {
   return (
@@ -14,14 +16,14 @@ export default function AddTaskModal() {
       <DialogTrigger asChild>
         <AddTask />
       </DialogTrigger>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Are you absolutely sure?</DialogTitle>
-          <DialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+      <DialogContent className="px-1 py-0">
+        <DialogHeader className="sr-only">
+          <DialogTitle className="sr-only">New task</DialogTitle>
+          <DialogDescription className="sr-only">
+            Create a new task
           </DialogDescription>
         </DialogHeader>
+        <AddTaskForm />
       </DialogContent>
     </Dialog>
   );
