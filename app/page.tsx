@@ -1,6 +1,20 @@
+import Tasks from "@/components/tasks/main";
 import { Button } from "@/components/ui/button";
 
-export default function Inbox() {
+async function getTasks() {
+  try {
+    const response = await fetch("http://localhost:3000/api/tasks", {
+      next: { tags: ["tasks"] },
+    });
+    const json = await response.json();
+    return json;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export default async function Inbox() {
+  const inboxData = await getTasks();
   return (
     <>
       <header className="flex flex-row justify-between items-center">
@@ -67,6 +81,7 @@ export default function Inbox() {
           </Button>
         </div>
       </header>
+      <Tasks tasksData={inboxData} />
     </>
   );
 }

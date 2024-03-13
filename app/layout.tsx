@@ -28,22 +28,22 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "h-screen bg-background font-sans antialiased",
           fontSans.variable
         )}
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           storageKey="theme"
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-row max-w-[1440px] mx-auto">
+          <div className="flex flex-row max-w-[1440px] h-full mx-auto">
             <NavBarLg />
             <NavBarSm />
-            <main className="px-12 py-8 w-full">
-              <section className="size-full px-7 py-4 shadow dark:shadow-primary/50 rounded-lg">
+            <main className="px-12 py-8 w-full h-full">
+              <section className="h-full px-7 py-4 shadow dark:shadow-primary/50 rounded-lg">
                 {children}
               </section>
             </main>

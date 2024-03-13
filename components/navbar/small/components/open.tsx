@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 export default function Open() {
   return (
     <Button
-      className="lg:hidden fixed top-12 left-0 rounded-l-none"
+      className="lg:hidden fixed top-12 left-0 rounded-l-none dark:border-primary/25 dark:shadow-primary/50"
       variant="outline"
       size="icon"
     >

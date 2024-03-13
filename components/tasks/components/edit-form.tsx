@@ -1,7 +1,10 @@
 "use client";
-
+import {
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogFooter,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { DialogClose } from "@/components/ui/dialog";
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,26 +12,32 @@ import { useForm } from "react-hook-form";
 
 import revalidate from "@/actions";
 
-const taskSchema = z.object({
-  taskName: z.string().min(1).max(50),
-  taskDescription: z.string().max(100),
+interface Props {
+  id: string;
+  oldName: string;
+  oldDescription: string;
+}
+
+const newTaskSchema = z.object({
+  newTaskName: z.string().min(1).max(50),
+  newTaskDescription: z.string().max(100),
 });
 
-export default function AddTaskForm() {
-  const { register, handleSubmit, watch } = useForm<z.infer<typeof taskSchema>>(
-    {
-      resolver: zodResolver(taskSchema),
-      defaultValues: {
-        taskName: "",
-        taskDescription: "",
-      },
-    }
-  );
+export default function EditForm({ id, oldName, oldDescription }: Props) {
+  const { register, handleSubmit, watch } = useForm<
+    z.infer<typeof newTaskSchema>
+  >({
+    resolver: zodResolver(newTaskSchema),
+    defaultValues: {
+      newTaskName: oldName,
+      newTaskDescription: oldDescription,
+    },
+  });
 
-  async function onSubmit(values: z.infer<typeof taskSchema>) {
+  async function onSubmit(values: z.infer<typeof newTaskSchema>) {
     try {
-      await fetch("http://localhost:3000/api/tasks", {
-        method: "POST",
+      await fetch(`http://localhost:3000/api/tasks/${id}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
@@ -52,11 +61,11 @@ export default function AddTaskForm() {
                   type="text"
                   aria-readonly="false"
                   aria-multiline="true"
-                  aria-label="Task name"
+                  aria-label="Edit task name"
                   translate="no"
                   tabIndex={0}
-                  {...register("taskName")}
-                  placeholder="Task name"
+                  {...register("newTaskName")}
+                  placeholder="New task name"
                   className="bg-inherit"
                 />
               </div>
@@ -69,11 +78,11 @@ export default function AddTaskForm() {
                   type="text"
                   aria-readonly="false"
                   aria-multiline="true"
-                  aria-label="Description"
+                  aria-label="Edit task description"
                   translate="no"
                   tabIndex={0}
-                  {...register("taskDescription")}
-                  placeholder="Description"
+                  {...register("newTaskDescription")}
+                  placeholder="New description"
                   className="bg-inherit"
                 />
               </div>
@@ -81,23 +90,21 @@ export default function AddTaskForm() {
           </div>
         </div>
       </div>
-      <div className="my-4 mx-0 py-0 px-4 w-full flex flex-row justify-between">
-        <div className="flex-nowrap ml-auto flex flex-row items-center gap-2 *:font-semibold p-0 m-0">
-          <DialogClose asChild>
-            <Button variant="secondary" type="button">
-              Cancel
-            </Button>
-          </DialogClose>
-          <DialogClose asChild>
-            <Button
-              type="submit"
-              disabled={watch("taskName") === "" ? true : false}
-            >
-              Add task
-            </Button>
-          </DialogClose>
-        </div>
-      </div>
+      <AlertDialogFooter className="my-4 mx-0 py-0 px-4 w-full flex flex-row justify-between">
+        <AlertDialogCancel asChild>
+          <Button variant="secondary" type="button">
+            Cancel
+          </Button>
+        </AlertDialogCancel>
+        <AlertDialogAction asChild>
+          <Button
+            type="submit"
+            disabled={watch("newTaskName") === "" ? true : false}
+          >
+            Save edit
+          </Button>
+        </AlertDialogAction>
+      </AlertDialogFooter>
     </form>
   );
 }
