@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-
-import pool from "@/db/pool";
+import { sql } from "@vercel/postgres";
 
 export async function PUT(
   request: Request,
@@ -11,15 +10,9 @@ export async function PUT(
     const body = await request.json();
     const { newTaskName, newTaskDescription } = body;
     //Update task title
-    await pool.query("UPDATE tasks SET task_name = $1 WHERE task_id = $2", [
-      newTaskName,
-      id,
-    ]);
+    await sql`UPDATE tasks SET task_name = ${newTaskName} WHERE task_id = ${id}`;
     //Update task description
-    await pool.query(
-      "UPDATE tasks SET task_description = $1 WHERE task_id = $2",
-      [newTaskDescription, id]
-    );
+    await sql`UPDATE tasks SET task_description = ${newTaskDescription} WHERE task_id = ${id}`;
     return NextResponse.json({
       message: "This task has been updated successfully!",
     });
@@ -34,7 +27,7 @@ export async function DELETE(
 ) {
   try {
     const id = params.slug;
-    await pool.query("DELETE FROM tasks WHERE task_id = $1", [id]);
+    await sql`DELETE FROM tasks WHERE task_id = ${id}`;
 
     return NextResponse.json("This task has been deleted successfully!");
   } catch (error: any) {

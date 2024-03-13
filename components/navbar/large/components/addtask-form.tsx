@@ -9,6 +9,8 @@ import { useForm } from "react-hook-form";
 
 import revalidate from "@/actions";
 
+import { cannonicalUrl } from "@/global";
+
 const taskSchema = z.object({
   taskName: z.string().min(1).max(50),
   taskDescription: z.string().max(100),
@@ -27,7 +29,7 @@ export default function AddTaskForm() {
 
   async function onSubmit(values: z.infer<typeof taskSchema>) {
     try {
-      await fetch("https://pomodoro-one-liard.vercel.app/api/tasks", {
+      await fetch(`${cannonicalUrl}/api/tasks`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

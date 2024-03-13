@@ -15,6 +15,8 @@ import { TrashIcon } from "@radix-ui/react-icons";
 
 import revalidate from "@/actions";
 
+import { cannonicalUrl } from "@/global";
+
 export default function Delete({
   taskId,
   taskName,
@@ -24,7 +26,7 @@ export default function Delete({
 }) {
   async function deleteTask() {
     try {
-      await fetch(`https://pomodoro-one-liard.vercel.app/api/tasks/${taskId}`, {
+      await fetch(`${cannonicalUrl}/api/tasks/${taskId}`, {
         method: "DELETE",
       });
     } catch (error) {

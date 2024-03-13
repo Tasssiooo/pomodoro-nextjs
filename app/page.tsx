@@ -1,10 +1,11 @@
 import Tasks from "@/components/tasks/main";
 import { Button } from "@/components/ui/button";
+import { cannonicalUrl } from "@/global";
 
 async function getTasks() {
   try {
     const response = await fetch(
-      "https://pomodoro-one-liard.vercel.app/api/tasks",
+      `${cannonicalUrl}/api/tasks`,
       {
         next: { tags: ["tasks"] },
       }

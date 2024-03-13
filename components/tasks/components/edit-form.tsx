@@ -12,6 +12,8 @@ import { useForm } from "react-hook-form";
 
 import revalidate from "@/actions";
 
+import { cannonicalUrl } from "@/global";
+
 interface Props {
   id: string;
   oldName: string;
@@ -36,7 +38,7 @@ export default function EditForm({ id, oldName, oldDescription }: Props) {
 
   async function onSubmit(values: z.infer<typeof newTaskSchema>) {
     try {
-      await fetch(`https://pomodoro-one-liard.vercel.app/api/tasks/${id}`, {
+      await fetch(`${cannonicalUrl}/api/tasks/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
