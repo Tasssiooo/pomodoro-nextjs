@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 
+<<<<<<< HEAD
 const allowedOrigins = ["https://pomodoro-one-liard.vercel.app/"];
+=======
+const allowedOrigins = ["https://pomodoro-one-liard.vercel.app//"];
+>>>>>>> 3f43a67a2cc94770bc4e0246dbc05db3023e0272
 
 const corsOptions = {
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
