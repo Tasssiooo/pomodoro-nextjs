@@ -36,11 +36,7 @@ export default function EditForm({ id, oldName, oldDescription }: Props) {
 
   async function onSubmit(values: z.infer<typeof newTaskSchema>) {
     try {
-<<<<<<< HEAD
       await fetch(`https://pomodoro-one-liard.vercel.app/api/tasks/${id}`, {
-=======
-      await fetch(`https://pomodoro-one-liard.vercel.app//api/tasks/${id}`, {
->>>>>>> 3f43a67a2cc94770bc4e0246dbc05db3023e0272
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

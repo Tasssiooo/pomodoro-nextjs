@@ -24,11 +24,7 @@ export default function Delete({
 }) {
   async function deleteTask() {
     try {
-<<<<<<< HEAD
       await fetch(`https://pomodoro-one-liard.vercel.app/api/tasks/${taskId}`, {
-=======
-      await fetch(`https://pomodoro-one-liard.vercel.app//api/tasks/${taskId}`, {
->>>>>>> 3f43a67a2cc94770bc4e0246dbc05db3023e0272
         method: "DELETE",
       });
     } catch (error) {

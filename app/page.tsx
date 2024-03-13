@@ -3,13 +3,12 @@ import { Button } from "@/components/ui/button";
 
 async function getTasks() {
   try {
-<<<<<<< HEAD
-    const response = await fetch("https://pomodoro-one-liard.vercel.app/api/tasks", {
-=======
-    const response = await fetch("https://pomodoro-one-liard.vercel.app//api/tasks", {
->>>>>>> 3f43a67a2cc94770bc4e0246dbc05db3023e0272
-      next: { tags: ["tasks"] },
-    });
+    const response = await fetch(
+      "https://pomodoro-one-liard.vercel.app/api/tasks",
+      {
+        next: { tags: ["tasks"] },
+      }
+    );
     const json = await response.json();
     return json;
   } catch (error) {

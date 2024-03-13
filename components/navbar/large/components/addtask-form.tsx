@@ -27,11 +27,7 @@ export default function AddTaskForm() {
 
   async function onSubmit(values: z.infer<typeof taskSchema>) {
     try {
-<<<<<<< HEAD
       await fetch("https://pomodoro-one-liard.vercel.app/api/tasks", {
-=======
-      await fetch("https://pomodoro-one-liard.vercel.app//api/tasks", {
->>>>>>> 3f43a67a2cc94770bc4e0246dbc05db3023e0272
         method: "POST",
         headers: {
           "Content-Type": "application/json",
