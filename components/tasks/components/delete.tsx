@@ -24,7 +24,7 @@ export default function Delete({
 }) {
   async function deleteTask() {
     try {
-      await fetch(`http://localhost:3000/api/tasks/${taskId}`, {
+      await fetch(`https://pomodoro-one-liard.vercel.app/api/tasks/${taskId}`, {
         method: "DELETE",
       });
     } catch (error) {
