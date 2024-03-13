@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 async function getTasks() {
   try {
-    const response = await fetch("http://localhost:3000/api/tasks", {
+    const response = await fetch("https://pomodoro-one-liard.vercel.app//api/tasks", {
       next: { tags: ["tasks"] },
     });
     const json = await response.json();
